@@ -11,6 +11,7 @@ class ArticlesController < ApplicationController
     @articles = Article.find(params[:id])
   end
 
+  # CREATE an Article
   def new
     @article = Article.new
   end
@@ -24,7 +25,21 @@ class ArticlesController < ApplicationController
       render :new
     end
   end
-  
+
+  # UPDATE an Article
+  def edit
+    @article = Article.find(params[:id])
+  end
+
+  def update
+    @article = Article.find(params[:id])
+    if @article.update(article_params)
+      redirect_to @article
+    else
+      render :edit
+    end
+  end
+
   private
 
   # This will filter what values  are allowed in fields
