@@ -1,5 +1,16 @@
-<h1> <%= @articles.title%> </h1>
-<p><%= @articles.body%></p>
+<h1> <%= @article.title%> </h1>
+<p><%= @article.body%></p>
 <ul>
-  <li><%= link_to "Edit this article", edit_article_path(@articles) %></li>
+  <li><%= link_to "Edit this article", edit_article_path(@article) %></li>
+  <li>
+    <%= link_to 'Destroy', article_path(@article),
+                            method: :delete,
+                            data: {confirm: 'Are you sure?'}%>
+  </li>
+  <!--
+
+    Calling DELETE request instead of get request
+    data: {confirm: } cause the conformation dialog to open when link is clicked
+
+  -->
 </ul>
