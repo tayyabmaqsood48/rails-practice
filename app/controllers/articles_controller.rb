@@ -1,5 +1,7 @@
 # frozen_string_litral:true
 class ArticlesController < ApplicationController
+  http_basic_authenticate_with name: 'tayyab', password: '123', except: [:index, :show]
+
   def index
     # This will fetch all data from database
     # we will use same name that we create new in our console to commit changes in database
