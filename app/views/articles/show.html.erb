@@ -1,16 +1,18 @@
-<h1> <%= @article.title%> </h1>
-<p><%= @article.body%></p>
+<h1><%= @article.title %></h1>
+Our blog has <%= Article.public_count %> articles and counting!
+<p><%= @article.body %></p>
+
 <ul>
-  <li><%= link_to "Edit this article", edit_article_path(@article) %></li>
-  <li>
-    <%= link_to 'Destroy', article_path(@article),
-                            method: :delete,
-                            data: {confirm: 'Are you sure?'}%>
-  </li>
-  <!--
-
-    Calling DELETE request instead of get request
-    data: {confirm: } cause the conformation dialog to open when link is clicked
-
-  -->
+  <li><%= link_to "Edit", edit_article_path(@article) %></li>
+  <li><%= link_to "Destroy", article_path(@article),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %></li>
 </ul>
+
+<h2>Comments</h2>
+<%= render @article.comments %>
+
+<!-- User can add comment in specific article-->
+
+<h2>Add a comment:</h2>
+<%= render 'comments/form' %>

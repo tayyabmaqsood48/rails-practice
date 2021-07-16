@@ -52,6 +52,7 @@ class ArticlesController < ApplicationController
 
   # This will filter what values  are allowed in fields
   def article_params
-    params.require(:article).permit(:title, :body)
+    params.require(:article).permit(:title, :body, :status)
   end
+
 end
