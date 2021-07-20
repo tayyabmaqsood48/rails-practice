@@ -1,5 +1,9 @@
-<h1>New article</h1>
+<%= render 'welcome/topnav'%>
+<div class="container">
+<h1 class='label'>New article</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', articles_path %>
+<%= link_to 'Back', articles_path, :class => 'btn btn-dark  btn-lg col-md-4 mt-1'%>
+</div>
+<div>

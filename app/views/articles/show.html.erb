@@ -1,18 +1,37 @@
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
+ <%= render 'welcome/topnav'%>
+ <div class = 'container mt-5'>
+    <div class = 'col'>
+      <div class = 'row'>
+        <p class = 'col col-md-12'>
+          <span class = 'fw-bold fs-4 '>Title:</span>
+          <span class = 'fw-normal ms-2 fs-4'> <%= @article.title %> </span>
+        </p>
 
-<p>
-  <strong>Text:</strong>
-  <%= @article.text %>
-</p>
+        <p class = 'col col-md-12'>
+          <span class = 'fw-bold fs-4 '>Text:</span>
+          <span class = 'fw-normal ms-2 fs-4'> <%= @article.text %> </span>
+        </p>
+      </div>
+    </div>
+    <%= render 'comments/header'%>
+      <%= render @article.comments %>
+    <%= render 'comments/footer'%>
 
-<h2>Comments</h2>
-<%= render @article.comments %>
+    <div class="form-check">
+      <input class="form-check-input fs-6" type="checkbox" value="add-comments" name = 'checkbox' id="check" onchange = 'checkboxComments()'>
+      <label class="form-check-label fs-4" for="flexCheckDefault">
+        Add Comments
+      </label>
+    </div>
 
-<h2>Add a comment:</h2>
-<%= render 'comments/form' %>
 
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
+    <div id = 'add_comments'>
+    <%= render 'comments/form' %>
+    </div>
+    <div>
+      <%= link_to 'Edit', edit_article_path(@article), :class => 'btn btn-dark btn-lg', :style => 'width:120px'%>
+      <%= link_to 'Back', articles_path, :class => 'btn btn-primary btn-lg', :style => 'width:120px'%>
+    </div>
+
+
+</div>

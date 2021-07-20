@@ -1,31 +1,29 @@
-<%= form_with model: @article, local: true do |form| %>
+<div class = 'form-group'>
+  <%= form_with model: @article, local: true do |form| %>
+    <% if @article.errors.any? %>
+        <div id="error_explanation" class = 'alert alert-danger'>
+          <h2>
+            <%= pluralize(@article.errors.count, "error")%> prohibited
+            this article from being saved:
+          </h2>
+          <ul>
+            <% @article.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
 
-  <% if @article.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@article.errors.count, "error") %> prohibited
-        this article from being saved:
-      </h2>
-      <ul>
-        <% @article.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
+    <p>
+      <%= form.label :title , :for => 'Title' %><br>
+      <%= form.text_field :title, :id => 'Title', class: 'form-control', :placeholder => 'Enter Title'%>
+    </p>
+
+    <p>
+      <%= form.label :text , :for => 'body'%><br>
+      <%= form.text_area :text ,:id => 'body', :class => 'form-control', :placeholder => 'Body Area', :style => 'height: 100px;'%>
+    </p>
+    <div>
+    <%= form.submit 'Submit', class: 'btn btn-primary btn-lg col-md-4' %>
   <% end %>
-
-  <p>
-    <%= form.label :title %><br>
-    <%= form.text_field :title %>
-  </p>
-
-  <p>
-    <%= form.label :text %><br>
-    <%= form.text_area :text %>
-  </p>
-
-  <p>
-    <%= form.submit %>
-  </p>
-
-<% end %>
+</div>
